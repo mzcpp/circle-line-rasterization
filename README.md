@@ -5,4 +5,4 @@ Sources:
   - http://www.sunshine2k.de/coding/java/Bresenham/RasterisingLinesCircles.pdf
   - http://fredericgoset.ovh/mathematiques/courbes/en/bresenham_circle.html
 
-<img src="https://i.imgur.com/VKMdxFl.png"/>
+<img src="https://i.imgur.com/aPrLCrr.png"/>
