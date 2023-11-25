@@ -24,7 +24,7 @@ public:
 
 	void CreateCircleBresenham(bool filled);
 
-	void CreateLineBresenham(Uint32* pixels, int x1, int y1, int x2, int y2);
+	void CreateCircleChordBresenham(Uint32* pixels, int x1, int y1, int x2, int y2);
 
 	void Tick();
 
