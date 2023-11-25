@@ -1,5 +1,5 @@
-# circle-rasterization
-Tech demo of naive and bresenham algorithms for circle rasterization
+# circle-line-rasterization
+Tech demo of naive and bresenham algorithms for circle and line rasterization.
 
 Sources:
   - http://www.sunshine2k.de/coding/java/Bresenham/RasterisingLinesCircles.pdf
