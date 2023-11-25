@@ -96,17 +96,17 @@ void Circle::CreateCircleBresenham(bool filled)
 
 		if (filled)
 		{
-			CreateLineBresenham(pixels_, radius_ - x, radius_ - y, radius_ - 1 + x, radius_ - y);
-			CreateLineBresenham(pixels_, radius_ - y, radius_ - x, radius_ - 1 + y, radius_ - x);
-			CreateLineBresenham(pixels_, radius_ - y, radius_ - 1 + x, radius_ - 1 + y, radius_ - 1 + x);
-			CreateLineBresenham(pixels_, radius_ - x, radius_ - 1 + y, radius_ - 1 + x, radius_ - 1 + y);
+			CreateCircleChordBresenham(pixels_, radius_ - x, radius_ - y, radius_ - 1 + x, radius_ - y);
+			CreateCircleChordBresenham(pixels_, radius_ - y, radius_ - x, radius_ - 1 + y, radius_ - x);
+			CreateCircleChordBresenham(pixels_, radius_ - y, radius_ - 1 + x, radius_ - 1 + y, radius_ - 1 + x);
+			CreateCircleChordBresenham(pixels_, radius_ - x, radius_ - 1 + y, radius_ - 1 + x, radius_ - 1 + y);
 		}
 	}
 
 	SDL_UpdateTexture(texture_, nullptr, pixels_, bbox_.w * sizeof(Uint32));
 }
 
-void Circle::CreateLineBresenham(Uint32* pixels_, int x1, int y1, int x2, int y2)
+void Circle::CreateCircleChordBresenham(Uint32* pixels_, int x1, int y1, int x2, int y2)
 {
 	bool changed = false;
 	int x = x1;
