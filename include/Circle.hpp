@@ -24,7 +24,7 @@ public:
 
 	void CreateCircleBresenham(bool filled);
 
-	void CreateCircleChordBresenham(int x1, int y1, int x2, int y2);
+	void CreateCircleChordEFLA(int x1, int y1, int x2, int y2);
 
 	void Tick();
 
