@@ -109,58 +109,58 @@ void Circle::CreateCircleBresenham(bool filled)
 void Circle::CreateCircleChordEFLA(int x1, int y1, int x2, int y2)
 {
 	bool y_longer = false;
-    int short_length = y2 - y1;
-    int long_length = x2 - x1;
+	int short_length = y2 - y1;
+	int long_length = x2 - x1;
 
-    if (std::abs(short_length) > std::abs(long_length))
-    {
-        std::swap(short_length, long_length);
-        y_longer = true;
-    }
+	if (std::abs(short_length) > std::abs(long_length))
+	{
+	    std::swap(short_length, long_length);
+	    y_longer = true;
+	}
 
-    const int decInc = long_length == 0 ? 0 : ((short_length << 16) / long_length);
+	const int decInc = long_length == 0 ? 0 : ((short_length << 16) / long_length);
 
-    if (y_longer) 
-    {
-        y1 *= bbox_.w;
-        y2 *= bbox_.w;
-        
-        if (long_length > 0)
-        {
-            for (int j = 0x8000 + (x1 << 16); y1 <= y2; j += decInc)
-            {
-            	pixels_[y1 + (j >> 16)] = pixel_color_;
-            	y1 += bbox_.w;
-            }
-        }
-        else
-        {
-            for (int j = 0x8000 + (x1 << 16); y1 >= y2; j -= decInc)
-            {
-            	pixels_[y1 + (j >> 16)] = pixel_color_;
-            	y1 -= bbox_.w;
-            }
-        }
-    }
-    else
-    {
-        if (long_length > 0)
-        {
-            for (int j = 0x8000 + (y1 << 16); x1 <= x2; j += decInc)
-            {
-            	pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
-            	++x1;
-            }
-        }
-        else
-        {
-            for (int j = 0x8000 + (y1 << 16); x1 >= x2; j -= decInc)
-            {
-            	pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
-            	--x1;
-            }
-        }
-    }
+	if (y_longer) 
+	{
+	    y1 *= bbox_.w;
+	    y2 *= bbox_.w;
+	    
+	    if (long_length > 0)
+	    {
+	        for (int j = 0x8000 + (x1 << 16); y1 <= y2; j += decInc)
+	        {
+	        	pixels_[y1 + (j >> 16)] = pixel_color_;
+	        	y1 += bbox_.w;
+	        }
+	    }
+	    else
+	    {
+	        for (int j = 0x8000 + (x1 << 16); y1 >= y2; j -= decInc)
+	        {
+	        	pixels_[y1 + (j >> 16)] = pixel_color_;
+	        	y1 -= bbox_.w;
+	        }
+	    }
+	}
+	else
+	{
+	    if (long_length > 0)
+	    {
+	        for (int j = 0x8000 + (y1 << 16); x1 <= x2; j += decInc)
+	        {
+	        	pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
+	        	++x1;
+	        }
+	    }
+	    else
+	    {
+	        for (int j = 0x8000 + (y1 << 16); x1 >= x2; j -= decInc)
+	        {
+	        	pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
+	        	--x1;
+	        }
+	    }
+	}
 }
 
 
