@@ -107,7 +107,7 @@ void Circle::CreateCircleBresenham(bool filled)
 	SDL_UpdateTexture(texture_, nullptr, pixels_, bbox_.w * sizeof(Uint32));
 }
 
-void Circle::CreateCircleChordBresenham(Uint32* pixels_, int x1, int y1, int x2, int y2)
+void Circle::CreateCircleChordBresenham(int x1, int y1, int x2, int y2)
 {
 	bool changed = false;
 	int x = x1;
