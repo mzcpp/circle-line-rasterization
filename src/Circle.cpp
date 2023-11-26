@@ -11,6 +11,7 @@ Circle::Circle(SDL_Renderer* renderer, SDL_Point center, int radius, SDL_Color c
 	radius_(radius), 
 	color_(color), 
 	pixel_color_(0), 
+	pixels_(nullptr), 
 	texture_(nullptr)
 {
 	bbox_.x = center_.x - radius_;
