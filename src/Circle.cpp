@@ -97,10 +97,10 @@ void Circle::CreateCircleBresenham(bool filled)
 
 		if (filled)
 		{
-			CreateCircleChordBresenham(pixels_, radius_ - x, radius_ - y, radius_ - 1 + x, radius_ - y);
-			CreateCircleChordBresenham(pixels_, radius_ - y, radius_ - x, radius_ - 1 + y, radius_ - x);
-			CreateCircleChordBresenham(pixels_, radius_ - y, radius_ - 1 + x, radius_ - 1 + y, radius_ - 1 + x);
-			CreateCircleChordBresenham(pixels_, radius_ - x, radius_ - 1 + y, radius_ - 1 + x, radius_ - 1 + y);
+			CreateCircleChordBresenham(radius_ - x, radius_ - y, radius_ - 1 + x, radius_ - y);
+			CreateCircleChordBresenham(radius_ - y, radius_ - x, radius_ - 1 + y, radius_ - x);
+			CreateCircleChordBresenham(radius_ - y, radius_ - 1 + x, radius_ - 1 + y, radius_ - 1 + x);
+			CreateCircleChordBresenham(radius_ - x, radius_ - 1 + y, radius_ - 1 + x, radius_ - 1 + y);
 		}
 	}
 
