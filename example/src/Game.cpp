@@ -17,7 +17,7 @@ Game::Game() :
 	initialized_ = Initialize();
 
 	const SDL_Color color = { 0x00, 0x00, 0xff, 0xff };
-	const Point<int> center = { static_cast<int>(constants::screen_width / 2), static_cast<int>(constants::screen_height / 2) };
+	const SDL_Point center = { static_cast<int>(constants::screen_width / 2), static_cast<int>(constants::screen_height / 2) };
 	constexpr int radius = 100;
 	circle_texture_ = std::make_unique<CircleTexture>(renderer_, center, radius, color);
 }
