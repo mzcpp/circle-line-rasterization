@@ -166,7 +166,6 @@ public:
         bbox_.x = center_.x - radius_;
         bbox_.y = center_.y - radius_;
 
-        SDL_SetRenderDrawColor(renderer_, 0xff, 0xff, 0xff, 0xff);
         SDL_Rect sdl_bbox = { bbox_.x, bbox_.y, bbox_.w, bbox_.h };
         SDL_RenderCopy(renderer_, texture_, nullptr, &sdl_bbox);
     }
