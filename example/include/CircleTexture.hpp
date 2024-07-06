@@ -56,7 +56,10 @@ public:
 
 	void CreateCircleBresenham(bool filled)
     {
-        memset(pixels_, 0, bbox_.w * bbox_.h * sizeof(Uint32));
+	for (int i = 0; i < bbox_.w * bbox_.h; ++i)
+	{
+		pixels_[i] = 0;
+	}
 
         int x = 0;
         int y = radius_;
