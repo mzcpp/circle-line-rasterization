@@ -43,8 +43,11 @@ Circle::~Circle()
 
 void Circle::CreateCircleNaive()
 {
-	memset(pixels_, 0, bbox_.w * bbox_.h * sizeof(Uint32));
-
+	for (int i = 0; i < bbox_.w * bbox_.h; ++i)
+	{
+		pixels_[i] = 0;
+	}
+	
 	const int cx = center_.x - bbox_.x;
 	const int cy = center_.y - bbox_.y;
 	const int radius_squared = radius_ * radius_;
@@ -65,7 +68,10 @@ void Circle::CreateCircleNaive()
 
 void Circle::CreateCircleBresenham(bool filled)
 {
-	memset(pixels_, 0, bbox_.w * bbox_.h * sizeof(Uint32));
+	for (int i = 0; i < bbox_.w * bbox_.h; ++i)
+	{
+		pixels_[i] = 0;
+	}
 
 	int x = 0;
 	int y = radius_;
