@@ -103,56 +103,58 @@ public:
     void CreateCircleChordEFLA(int x1, int y1, int x2, int y2)
     {
         bool y_longer = false;
-        int short_length = y2 - y1;
-        int long_length = x2 - x1;
+        int increment_val = 0;
+        int end_val = 0;
+        int short_len = y2 - y1;
+        int long_len = x2 - x1;
 
-        if (std::abs(short_length) > std::abs(long_length))
+        if (std::abs(short_len) > std::abs(long_len))
         {
-            std::swap(short_length, long_length);
+            int swap = short_len;
+            short_len = long_len;
+            long_len = swap;
             y_longer = true;
         }
 
-        const int decInc = long_length == 0 ? 0 : ((short_length << 16) / long_length);
+        end_val = long_len;
 
-        if (y_longer) 
+        if (long_len < 0)
         {
-            y1 *= bbox_.w;
-            y2 *= bbox_.w;
-            
-            if (long_length > 0)
-            {
-                for (int j = 0x8000 + (x1 << 16); y1 <= y2; j += decInc)
-                {
-                    pixels_[y1 + (j >> 16)] = pixel_color_;
-                    y1 += bbox_.w;
-                }
-            }
-            else
-            {
-                for (int j = 0x8000 + (x1 << 16); y1 >= y2; j -= decInc)
-                {
-                    pixels_[y1 + (j >> 16)] = pixel_color_;
-                    y1 -= bbox_.w;
-                }
-            }
-        }
+            increment_val = -1;
+            long_len = -long_len;
+        } 
         else
+        { 
+            increment_val = 1;
+        }
+
+        double dec_inc = 0.0;
+
+        if (long_len == 0)
         {
-            if (long_length > 0)
+            dec_inc = static_cast<double>(short_len);
+        } 
+        else
+        { 
+            dec_inc = (static_cast<double>(short_len) / static_cast<double>(long_len));
+        }
+
+        double j = 0.0;
+
+        if (y_longer)
+        {
+            for (int i = 0; i != end_val; i += increment_val)
             {
-                for (int j = 0x8000 + (y1 << 16); x1 <= x2; j += decInc)
-                {
-                    pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
-                    ++x1;
-                }
+                pixels_[(y1 + i) * bbox_.w + (x1 + static_cast<int>(j))] = pixel_color_;
+                j += dec_inc;
             }
-            else
+        } 
+        else 
+        {
+            for (int i = 0; i != end_val; i += increment_val)
             {
-                for (int j = 0x8000 + (y1 << 16); x1 >= x2; j -= decInc)
-                {
-                    pixels_[(j >> 16) * bbox_.w + x1] = pixel_color_;
-                    --x1;
-                }
+                pixels_[(y1 + static_cast<int>(j)) * bbox_.w + (x1 + i)] = pixel_color_;
+                j += dec_inc;
             }
         }
     }
