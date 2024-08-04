@@ -6,4 +6,4 @@ Sources:
   - http://fredericgoset.ovh/mathematiques/courbes/en/bresenham_circle.html
   - http://www.edepot.com/algorithm.html
 
-<img src="https://i.imgur.com/aPrLCrr.png"/>
+<img src="img/circles.png"/>
